@@ -28,3 +28,26 @@ class Exercise4:
         celsius = (fahrenheit - 32) * 5 / 9
         print("The celcius degree is:", celsius)
 
+list = []
+class Exercise5:
+    def __init__(self, number, system):
+        stringNumber = ""
+        if system == 2:
+            stringNumber = "Binary: "
+        elif system == 16:
+            stringNumber = "Hex: "
+        else:
+            print("Wrong system, please input again! ")
+        list.clear()
+        Exercise5.convert(number, system)
+        for i in list:
+            stringNumber += str(i)
+        print(stringNumber)
+    def convert(number, system):
+        if int(number / system) > 0 or number % system != 0:
+            Exercise5.convert(int(number / system), system)
+            if number % system > 9:
+                characters = ['A', 'B', 'C', 'D', 'E', 'F']
+                list.append(characters[number % system - 10])
+            else:
+                list.append(number % system)
