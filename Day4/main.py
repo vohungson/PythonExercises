@@ -1,4 +1,5 @@
-print("Exercise Day4")
+import datetime
+import re
 
 # EXERCISE 1:
 """
@@ -21,7 +22,6 @@ class Exercise1:
 
 
 Exercise1([10, 11, 21, 45, 56, 84, 25, 32, 57, 46, 83, 8, 5, 4, 7, 6, 3, 41, 23, 72])
-
 
 # EXERCISE 2:
 """
@@ -62,20 +62,20 @@ should return 4 as the new length of the array.
 class Exercise3:
     def __init__(self, numbers):
         print("\nExercise 3: ")
-        numbers.sort()
-        print(numbers)
+        numbers.sort ()
+        print ( numbers )
         count = 0
-        for i in range(len(numbers) - 1):
-            if numbers[i] == numbers[i+1]:
+        for i in range ( len ( numbers ) - 1 ):
+            if numbers[i] == numbers[i + 1]:
                 numbers[i] = 1000
                 count += 1
-        numbers.sort()
-        for i in range(count):
-            numbers.pop()
-        print(numbers)
+        numbers.sort ()
+        for i in range ( count ):
+            numbers.pop ()
+        print ( numbers )
 
 
-Exercise3([20, 20, 20, 30, 40, 50, 50, 50, 40])
+Exercise3 ( [20, 20, 20, 30, 40, 50, 50, 50, 40] )
 
 # EXERCISE 4:
 """
@@ -87,34 +87,40 @@ therefore the program will return its length 5.
 """
 
 
+class Exercise4:
+    def __init__(self, numbers):
+        print ( "\nExercise 4: " )
+        numbers.sort ()
+        print ( numbers )
+        start_longest = end_longest = start = end = count = 0
+        for i in range ( len ( numbers ) - 1 ):
+            if numbers[i] + 1 == numbers[i + 1]:
+                end += 1
+                if end - start > end_longest - start_longest:
+                    start_longest = start
+                    end_longest = end
+            else:
+                start = end = i + 1
+        print ( "start longest:", start_longest )
+        print ( "end longest:", end_longest )
+        print ( "Output:", numbers[start_longest:end_longest + 1] )
+
+
+Exercise4 ( [49, 1, 3, 200, 2, 4, 70, 5, 11, 12, 13, 14, 15, 16, 20] )
+
 # EXERCISE 5:
-"""
-Write a Python program to find all the unique triplets such that sum of 
-all the three elements [x, y, z (x ≤ y ≤ z)] equal to a specified number.
-Sample array: [1, -2, 0, 5, -1, -4]
-Target value: 2. 
-"""
-
-
-# EXERCISE 6:
 """
 Write a Python program to compute the difference between two dates (year, months, days)
 """
 
-
-# EXERCISE 7:
-"""
-Write a Python program to check whether a given number is an ugly number. 
-In number system, ugly numbers are positive numbers whose only prime factors 
-are 2, 3 or 5. First 10 ugly numbers are 1, 2, 3, 4, 5, 6, 8, 9, 10, 12. 
-By convention, 1 is included. 
-Test Date:Input an integer number: 235 
-Expected Output :
-It is not an ugly number.
-"""
+print("\nExercise 5")
+x = datetime.datetime(2020, 5, 17)
+y = datetime.datetime(2010, 6, 13)
+z = x - y
+print(z)
 
 
-# EXERCISE 8:
+# EXERCISE 6:
 """
 Write a Python method to find the smallest number among three numbers. 
 Go to the editor
@@ -126,7 +132,18 @@ Expected Output:
 The smallest value is 25.0
 """
 
-# EXERCISE 9:
+
+class Exercise6:
+    def __init__(self, numbers):
+        print("\nExercise 6: ")
+        numbers.sort()
+        print("The smallest value is", numbers[0])
+
+
+Exercise6([25, 37, 29])
+
+
+# EXERCISE 7:
 """
 Write a Python method to check whether a string is a valid password. Go to the editor
 Password rules:
@@ -141,7 +158,26 @@ Input a password (You are agreeing to the above Terms and Conditions.): abcd1234
 Password is valid: abcd1234
 """
 
-# EXERCISE 10:
+
+class Exercise7:
+    def __init__(self, string):
+        print("\nExercise 7: ")
+        print("The password is: ", Exercise7.check_password(string))
+
+    @staticmethod
+    def check_password(string):
+        check = True
+        x = re.findall("[a-zA-Z0-9]", string)
+        d = re.findall("[\d]", string)
+        if len(string) != len(x) or len(x) < 8 or len(d) < 2:
+            check = False
+        return check
+
+
+Exercise7("abcdefg12")
+
+
+# EXERCISE 8:
 """
 Write Python methods to calculate the area of a triangle. 
 Expected Output:
@@ -150,3 +186,14 @@ Input Side-2: 15
 Input Side-3: 20                                                                              
 The area of the triangle is 72.6184377413890
 """
+
+
+class Exercise8:
+    def __init__(self, a, b, c):
+        print("\nExercise 8: ")
+        s = (a + b + c)/2
+        area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+        print("Area =", area)
+
+
+Exercise8(10, 15, 20)
