@@ -199,13 +199,12 @@ Write a Java program to count the number of words ending in 'm' or 'n' (not case
 class Exercise10:
     def __init__(self, string):
         print("\nExercise 10: ")
-        string += '.'
-        x = re.findall("[\w]*[m|n][\W]", string)
+        x = re.findall("\w*[m|n]\W|\w+[m|n]$", string)
         print(x)
         print("The number of words:", len(x))
 
 
-Exercise10("mam is in the room")
 
+Exercise10("mam is in mo omo the room")
 
 # EXERCISE 11:
