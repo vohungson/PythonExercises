@@ -5,11 +5,49 @@ print("Exercise Day4")
 Write a Python program to find the number of even and odd integers in a given array of integers.
 """
 
+
+class Exercise1:
+    def __init__(self, numbers):
+        print("\nExercise 1: ")
+        even = 0
+        odd = 0
+        for n in numbers:
+            if n % 2 == 0:
+                even += 1
+            else:
+                odd += 1
+        print("Number of even integers: ", even)
+        print("Number of odd integers: ", odd)
+
+
+Exercise1([10, 11, 21, 45, 56, 84, 25, 32, 57, 46, 83, 8, 5, 4, 7, 6, 3, 41, 23, 72])
+
+
 # EXERCISE 2:
 """
 Write a Python program to check if the sum of all the 10's in the array is exactly 30. 
 Return false if the condition does not satisfy, otherwise true. 
 """
+
+
+class Exercise2:
+    def __init__(self, numbers):
+        print("\nExercise 2: ")
+        print(numbers)
+        print(Exercise2.check_ten_numbers(numbers))
+
+    @staticmethod
+    def check_ten_numbers(numbers):
+        check = True
+        sum_num = 0
+        for n in numbers:
+            sum_num += n
+        if sum_num != 30:
+            check = False
+        return check
+
+
+Exercise2([1, 2, 3, 4, 5, 1, 2, 3, 4, 5])
 
 # EXERCISE 3:
 """
@@ -20,6 +58,24 @@ After removing the duplicate elements the program
 should return 4 as the new length of the array. 
 """
 
+
+class Exercise3:
+    def __init__(self, numbers):
+        print("\nExercise 3: ")
+        numbers.sort()
+        print(numbers)
+        count = 0
+        for i in range(len(numbers) - 1):
+            if numbers[i] == numbers[i+1]:
+                numbers[i] = 1000
+                count += 1
+        numbers.sort()
+        for i in range(count):
+            numbers.pop()
+        print(numbers)
+
+
+Exercise3([20, 20, 20, 30, 40, 50, 50, 50, 40])
 
 # EXERCISE 4:
 """
