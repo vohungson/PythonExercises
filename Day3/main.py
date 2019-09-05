@@ -204,7 +204,108 @@ class Exercise10:
         print("The number of words:", len(x))
 
 
-
 Exercise10("mam is in mo omo the room")
 
+
 # EXERCISE 11:
+"""
+Write a Python program to find the longest substring appears at both ends of a given string. 
+Sample Output:
+The given string is: playersplay
+The longest substring in the string is: play
+"""
+
+class Exercise11:
+    def __init__(self, string):
+        print("\nExercise  11: ")
+        end = 0
+        for i in range(int(len(string)/2)):
+            if string[i] == string[len(string)-1]:
+                end = i
+                break
+        start = 0
+        for i in range(int(len(string)/2),len(string)):
+            if string[i] == string[0]:
+                start = i
+                break
+        print("len",len(string))
+        print("end",end)
+        print("start",start)
+        if end == len(string) - 1 - start:
+            print("Step if = ", Exercise11.check_substring(self, string, end, start))
+            if Exercise11.check_substring(self, string, end, start):
+                print("Result: ", string[:(end+1)])
+            else:
+                print("We can not find out the substring")
+        elif end < len(string) - start:
+            d = len(string) - 1 - start - end
+            print("else if", d)
+            if Exercise11.check_substring(self, string, end + d, start):
+                print("Result1: ", string[:(end + d + 1)])
+            elif Exercise11.check_substring(self, string, end, start + d):
+                print("Result2: ", string[:(end + 1)])
+            else:
+                print("We can not find out the substring")
+        else:
+            print("We can not find out the substring")
+
+    @staticmethod
+    def check_substring(self, string, end, start):
+        check = True
+        i = 0
+        while i <= end:
+            if string[i] != string[start + i]:
+                check = False
+            print(string[i], string[start + i])
+            i += 1
+        print(check)
+        return check
+
+
+Exercise11("pplayerspplay")
+
+# EXERCISE 12:
+"""
+Write a Python program to return the string after removing all 'z' 
+(except the very first and last) from a given string.
+Sample Output:
+The given string is: zebrazone
+The new string is: zebraone
+"""
+class Exercise12:
+    def __init__(self, string):
+        print("\nExercise 12: ")
+        x = re.findall("[a-yA-Y\W]*", string)
+        new_string = ""
+        for s in x:
+            new_string += s
+        if string[0] == 'z' or string[0] == 'Z':
+            new_string = string[0] + new_string
+        if string[len(string)-1] == 'z' or string[len(string)-1] == 'Z':
+            new_string = new_string + string[len(string)-1]
+        print(new_string)
+
+
+Exercise12("zebrazone")
+
+
+# EXERCISE 13:
+"""
+Write a Python program to return a new string using every 
+characters of even positions from a given string. Sample Output:
+The given string is: w3resource.com
+The new string is: wrsuc.o
+"""
+
+
+class Exercise13:
+    def __init__(self, string):
+        print("\nExercise 13: ")
+        i = 0
+        for s in string:
+            if i % 2 == 0:
+                print(s, end='')
+            i += 1
+
+
+Exercise13("w3resource.com")
